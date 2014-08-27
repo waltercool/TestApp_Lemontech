@@ -6,14 +6,14 @@ import android.os.Bundle;
 import letstalkclone.lemontechapp.slash.cl.testapp_lemontech.R;
 
 /**
- * Created by waltercool on 25-08-14.
+ * Created by waltercool on 27-08-14.
  */
-public class Splash extends Activity
-{
+public class Register extends Activity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+        setContentView(R.layout.activity_register);
     }
 
     @Override

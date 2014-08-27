@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">TestApp_Lemontech</string>
+    <string name="btn_create_account">Create</string>
+    <string name="btn_upload_picture">Upload Picture</string>
+    <string name="txt_login">Login</string>
+    <string name="txt_register">Register</string>
+    <string name="hint_confirm_password">Confirm password</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_phone">Phone</string>
+    <string name="error_email_regex">Invalid email</string>
+    <string name="error_pass_length">Password too short</string>
+    <string name="error_login_failed">Invalid email or password</string>
 </resources>
