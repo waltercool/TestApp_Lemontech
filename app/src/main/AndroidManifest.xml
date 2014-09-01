@@ -12,6 +12,7 @@
             </intent-filter>
         </activity>
         <activity android:name="cl.slash.letstalkclone.activity.Register" />
+        <activity android:name="cl.slash.letstalkclone.activity.Main" />
     </application>
 
 </manifest>

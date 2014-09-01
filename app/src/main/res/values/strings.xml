@@ -4,6 +4,8 @@
     <string name="btn_upload_picture">Upload Picture</string>
     <string name="txt_login">Login</string>
     <string name="txt_register">Register</string>
+    <string name="txt_openmessages">Open Messages</string>
+    <string name="txt_closedmessages">Closed Messages</string>
     <string name="hint_confirm_password">Confirm password</string>
     <string name="hint_email">Email</string>
     <string name="hint_name">Name</string>
@@ -12,4 +14,9 @@
     <string name="error_email_regex">Invalid email</string>
     <string name="error_pass_length">Password too short</string>
     <string name="error_login_failed">Invalid email or password</string>
+    <string name="error_name_short">Name too short</string>
+    <string name="error_pass_not_equal">Passwords aren\'t equal</string>
+    <string name="error_cant_open_image">The selected picture can\'t be opened</string>
+    <string name="accessibility_open_main_drawer">Open menu</string>
+    <string name="accessibility_close_main_drawer">Close menu</string>
 </resources>
