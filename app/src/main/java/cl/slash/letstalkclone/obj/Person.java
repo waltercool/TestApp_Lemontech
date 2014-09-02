@@ -3,6 +3,7 @@ package cl.slash.letstalkclone.obj;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.File;
 import java.text.ParseException;
 import java.util.Date;
 
@@ -16,15 +17,15 @@ public class Person implements Parcelable {
     private String name;
     private String email;
     private Date createdAt;
-    private String urlAvatar;
+    private File avatar;
     private String token;
 
-    public Person(int id, String name, String email, Date createdAt, String urlAvatar, String token) {
+    public Person(int id, String name, String email, Date createdAt, File avatar, String token) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.createdAt = createdAt;
-        this.urlAvatar = urlAvatar;
+        this.avatar = avatar;
         this.token = token;
     }
 
@@ -38,7 +39,7 @@ public class Person implements Parcelable {
             e.printStackTrace();
             this.createdAt = new Date();
         }
-        this.urlAvatar = in.readString();
+        this.avatar = new File(in.readString());
         this.token = in.readString();
     }
 
@@ -48,7 +49,7 @@ public class Person implements Parcelable {
         dest.writeString(name);
         dest.writeString(email);
         dest.writeString(DateToolkit.commonDateFormat().format(createdAt));
-        dest.writeString(urlAvatar);
+        dest.writeString(avatar.getAbsolutePath());
         dest.writeString(token);
     }
 
@@ -68,8 +69,8 @@ public class Person implements Parcelable {
         return createdAt;
     }
 
-    public String getUrlAvatar() {
-        return urlAvatar;
+    public File getAvatar() {
+        return avatar;
     }
 
     public String getToken() {

@@ -6,6 +6,8 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -25,7 +27,7 @@ public class Main extends Activity implements View.OnClickListener, AdapterView.
     private static final int    MENU_OPEN_MESSAGES = 10,
                                 MENU_CLOSED_MESSAGES = 20,
                                 MENU_CONFIGURATION = 30;
-
+    private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
 
     @Override
@@ -47,6 +49,14 @@ public class Main extends Activity implements View.OnClickListener, AdapterView.
         super.onDestroy();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(mDrawerToggle.onOptionsItemSelected(item)){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private void initializeMainFragment() {
         Fragment openMessages = new MessageList();
         Bundle args = new Bundle();
@@ -59,8 +69,7 @@ public class Main extends Activity implements View.OnClickListener, AdapterView.
 
     private void configureDrawer() {
         ListView drawerList = (ListView)findViewById(R.id.activity_main_drawerList);
-        DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.activity_main_drawer);
-
+        mDrawerLayout = (DrawerLayout)findViewById(R.id.activity_main_drawer);
         ArrayList<MainDrawerListItem> menuItems = new ArrayList<MainDrawerListItem>();
         menuItems.add(new MainDrawerListItem(MENU_OPEN_MESSAGES, "Opened messages", 0));
         menuItems.add(new MainDrawerListItem(MENU_CLOSED_MESSAGES, "Closed messages", 0));
@@ -69,10 +78,10 @@ public class Main extends Activity implements View.OnClickListener, AdapterView.
         drawerList.setAdapter(new MainDrawerListAdapter(this, menuItems));
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setDisplayShowHomeEnabled(true);
-        mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.drawable.ic_navigation_drawer,
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.ic_navigation_drawer,
                 R.string.accessibility_open_main_drawer, R.string.accessibility_close_main_drawer);
         drawerList.setOnItemClickListener(this);
-        drawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
 
     @Override
@@ -104,5 +113,6 @@ public class Main extends Activity implements View.OnClickListener, AdapterView.
             ft.replace(R.id.activity_main_fragmentcontainer, fReplacement);
             ft.commit();
         }
+        mDrawerLayout.closeDrawer(Gravity.START);
     }
 }
