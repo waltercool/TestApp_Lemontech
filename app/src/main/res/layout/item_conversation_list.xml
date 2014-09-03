@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/item_conversation_list_contact_image"
         android:layout_width="70dp"
-        android:layout_height="match_parent"
+        android:layout_height="70dp"
         android:src="@drawable/main_img"
         android:scaleType="fitXY" />
     <LinearLayout

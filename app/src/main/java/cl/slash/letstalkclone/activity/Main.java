@@ -15,6 +15,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import cl.slash.letstalkclone.adapter.MainDrawerListAdapter;
+import cl.slash.letstalkclone.fragment.ConfigurationFragment;
 import cl.slash.letstalkclone.fragment.MessageList;
 import cl.slash.letstalkclone.obj.MainDrawerListItem;
 import letstalkclone.lemontechapp.slash.cl.testapp_lemontech.R;
@@ -61,10 +62,10 @@ public class Main extends Activity implements View.OnClickListener, AdapterView.
         Fragment openMessages = new MessageList();
         Bundle args = new Bundle();
         args.putInt(MessageList.TYPE_MESSAGE, MessageList.TYPE_OPEN);
-
         openMessages.setArguments(args);
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.add(R.id.activity_main_fragmentcontainer, openMessages);
+        ft.commit();
     }
 
     private void configureDrawer() {
@@ -105,6 +106,7 @@ public class Main extends Activity implements View.OnClickListener, AdapterView.
                 args.putInt(MessageList.TYPE_MESSAGE,MessageList.TYPE_CLOSED);
                 break;
             case MENU_CONFIGURATION:
+                fReplacement = new ConfigurationFragment();
                 break;
         }
         if(fReplacement != null) {

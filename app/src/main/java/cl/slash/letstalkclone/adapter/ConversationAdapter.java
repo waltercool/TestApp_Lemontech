@@ -1,13 +1,14 @@
 package cl.slash.letstalkclone.adapter;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -48,7 +49,7 @@ public class ConversationAdapter extends BaseAdapter {
         ViewHolder holder;
         if(convertView == null) {
             LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.item_conversation_list, parent);
+            convertView = inflater.inflate(R.layout.item_conversation_list, null);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         } else {
@@ -56,9 +57,14 @@ public class ConversationAdapter extends BaseAdapter {
         }
 
         Conversation item = getItem(position);
-        holder.getImage().setImageDrawable(Drawable.createFromPath( item.getLastMessagePerson().getAvatar().getAbsolutePath() ));
+
         holder.getTitle().setText(item.getIssue());
         holder.getLastMsg().setText(item.getLastMessage());
+//        holder.getImage().setImageDrawable(Drawable.createFromPath( item.getLastMessagePerson().getAvatar().getAbsolutePath() ));
+        Picasso.with(mContext).
+                load("http://resources1.news.com.au/images/2014/05/20/1226924/386913-36d99f00-dfe0-11e3-ada0-03258d7c0c20.jpg").
+                into(holder.getImage());
+//        mExecutorService.submit(new ImageLoadTask(mContext, holder.getImage(), item.getLastMessagePerson().getAvatar()));
 
         return convertView;
     }
